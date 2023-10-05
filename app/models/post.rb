@@ -11,4 +11,11 @@
 #  board_id   :integer
 #
 class Post < ApplicationRecord
+  validates :body, presence: true
+  def expired
+    if self.expires_on - Date.today <= 0
+      return true
+    else return false
+    end
+  end
 end
